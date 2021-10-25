@@ -159,3 +159,37 @@ unsigned mcd(int a, int b) {
     
     return a;
 }
+
+/*
+ Pre: a!=0ob!=0
+* Post: Ha devuelto el mínimo común múltiplo de «a» y «b». */
+unsigned mcm(int a, int b){
+
+    //En caso en el que solo uno de los dos sea negativo lo convierte a posotivo
+    if (a<0 && b>0){
+        a = -a;
+    }
+    else if(a>0 && b<0){
+        b = -b;
+    }
+    //Equivalencia matemática entre Mcd y mcm
+    int n=(a*b)/mcd(a,b);
+
+    return n;
+    
+}
+
+/*
+* Pre: ---
+* Post: Ha devuelto true si y solo si el número «n» es capicúa cuando se escribe en base 10. */
+bool esCapicua(int n){
+    
+    //A partir de una funicón previamente declarada compruebo si el número es igual a su imágen especular
+    if (imagen(n)==n){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+

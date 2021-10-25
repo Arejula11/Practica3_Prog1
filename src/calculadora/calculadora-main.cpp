@@ -17,7 +17,7 @@ using namespace std;
 /*
  * Número de operaciones que ofrece actualmente el menú del programa.
  */
-const unsigned NUM_OPERACIONES = 5;
+const unsigned NUM_OPERACIONES = 9;
 
 /*
  *  Pre:  ---
@@ -33,6 +33,10 @@ void presentarMenu() {
     cout << "3 - Extraer una cifra de un entero" << endl;
     cout << "4 - Calcular la imagen especular de un entero" << endl;
     cout << "5 - Comprobar si un entero es primo" << endl;
+    cout << "6 - Calcular el factorial de un número" << endl;
+    cout << "7 - Calcular el máximo común divisor de dos numeros" << endl;
+    cout << "8 - Calcular el mínimo común divisor de dos numeros" << endl;
+    cout << "9 - Comprobar si un entero es capicua" << endl;
     cout << endl;
 }
 
@@ -116,6 +120,47 @@ void ejecutarEsPrimo(int numero) {
     cout << " es primo." << endl;
 }
 
+void ejecutarFactorial(int numero) {
+    cout<< "El factorial de "<< numero<< " es "<<factorial(numero)<< "."<<endl;
+ 
+
+}
+
+void ejecutarMcd(int numero, int numero2){
+    if (numero==numero2)
+    {
+        cout<<"Ambos números no  pueden ser "<<numero<<" simultáneamente"<<"."<<endl;
+    }
+    else{
+        cout<<"El máximo común divisor de "<<numero<< " y "<<numero2<< " es "<<mcd(numero,numero2)<<"."<<endl;
+    }
+    
+}
+
+void ejecutarMcm(int numero, int numero2){
+    if (numero==numero2)
+    {
+        cout<<"Ambos números no  pueden ser "<<numero<<" simultáneamente"<<"."<<endl;
+    }
+    else{
+        cout<<"El mínimo común multiplo de "<<numero<< " y "<<numero2<< " es "<<mcm(numero,numero2)<<endl;
+    }
+
+}
+void ejecutarEsCapicua(int numero){
+
+   cout << "El número " << numero;
+    if (!esCapicua(numero)) {
+        cout << " no";
+    }
+    cout << " es capicúa." << endl;
+}
+
+    
+        
+    
+
+
 
 /*
  *  Pre:  ---
@@ -147,12 +192,33 @@ void ejecutarOrden(unsigned operacion) {
         else if (operacion == 5) {
             ejecutarEsPrimo(numero);
         }
+        else if (operacion == 6) {
+            ejecutarFactorial(numero);
+        }
+        else if (operacion == 7) {
+            cout<<"Escriba otro numero: ";
+            int numero2;
+            cin>>numero2;
+            ejecutarMcd(numero,numero2);
+        }
+        else if (operacion == 8){
+            cout<<"Escriba otro numero: ";
+            int numero2;
+            cin>>numero2;
+            ejecutarMcm(numero,numero2);
+
+        }
+        else if (operacion == 9){
+        ejecutarEsCapicua(numero);
+
+        }
     }
     else {
         // El código de operación no es válido
         cout << "Opción desconocida" << endl;
     }
 }
+
 
 
 /*
