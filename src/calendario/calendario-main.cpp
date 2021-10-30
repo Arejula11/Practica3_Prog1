@@ -14,6 +14,7 @@
 #include <iostream>
 #include <string>
 #include<iomanip>
+#include<fechas.hpp>
 using namespace std;
 
 /*
@@ -57,14 +58,69 @@ int main() {
         cout<<"El año debe ser igual o posterior a 1900: ";
         cin>>agno;
     } 
-    cout<<setw(19);
+    cout<<setw(21);
     escribirNombreMes(mes);
     cout<<" "<<agno<<endl;
-    cout<<setw(24)<<" L  M  X  J  V  S  D"<<endl;
-    cout<<" - - - - - - - - - - - -"<<endl;
+    cout<<" L   M   X   J   V   S   D"<<endl;
+    cout<<" - - - - - - - - - - - - -"<<endl;
      
-     
-     
+    unsigned dia=1;
+
+    if (diaDeLaSemana(1,mes,agno)==1)
+    {
+        cout<<"     "<<dia<<"  ";
+    }
+    else if (diaDeLaSemana(1,mes,agno)==2)
+    {
+        cout<<"         "<<dia<<"  ";
+    }
+    else if (diaDeLaSemana(1,mes,agno)==3)
+    {
+        cout<<"             "<<dia<<"  ";
+    }
+    else if (diaDeLaSemana(1,mes,agno)==4)
+    {
+        cout<<"                 "<<dia<<"  ";
+    }
+    else if (diaDeLaSemana(1,mes,agno)==5)
+    {
+        cout<<"                     "<<dia<<"  ";
+    }
+    else if (diaDeLaSemana(1,mes,agno)==6)
+    {
+        cout<<"                         "<<dia<<"  ";
+    }
+    else
+    {
+        cout<<" "<<dia<<"  ";
+    }
+    while(dia<diasDelMes(mes,agno)){
+
+            dia++;
+            if (diaDeLaSemana(dia,mes,agno)==0)
+            {   
+                if(dia>=10){
+                    cout<<endl;
+                cout<<dia<<"  ";
+                }
+                else{
+                cout<<endl;
+                cout<<" "<<dia<<"  ";
+                }
+            }
+            else{
+                if(dia>=10){
+                    
+                cout<<dia<<"  ";
+                }
+                else{
+                cout<<" "<<dia<<"  ";
+                }
+            }  
+            
+        
+        
+    }
      
      
      
