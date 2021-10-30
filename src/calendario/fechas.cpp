@@ -21,7 +21,7 @@
  */
 void componer(unsigned dia, unsigned mes, unsigned agno,
               unsigned& f) {
-    // Completar
+    f=agno*10000+mes*100+dia;
 }
 
 
@@ -35,7 +35,9 @@ void componer(unsigned dia, unsigned mes, unsigned agno,
  */
 void descomponer(unsigned f,
                  unsigned& dia, unsigned& mes, unsigned& agno) {
-    // Completar
+    dia=f%100;
+    mes=f%10000/100;
+    agno=f/10000;
 }
 
 
@@ -48,7 +50,13 @@ void descomponer(unsigned f,
  *       del parámetro «f1» es anterior a la representada por «f2».
  */
 bool esAnterior(unsigned f1, unsigned f2) {
-    // Completar
+    if (f1<f2)
+    {
+       return true;
+    }
+    else{
+        return false;
+    }
 }
 
 
@@ -58,10 +66,13 @@ bool esAnterior(unsigned f1, unsigned f2) {
  *       acuerdo con las reglas del calendario gregoriano.
  */
 bool esBisiesto(unsigned agno) {
+
     bool multiplo4   = (agno %   4 == 0);
     bool multiplo100 = (agno % 100 == 0);
     bool multiplo400 = (agno % 400 == 0);
     return multiplo400 || (multiplo4 && !multiplo100);
+    
+    
 }
 
 
@@ -74,9 +85,30 @@ bool esBisiesto(unsigned agno) {
  *                    diasDelMes(2, 2020) devuelve 29.
  */
 unsigned diasDelMes(unsigned mes, unsigned agno) {
-    // Completar
-}
 
+   if (agno>1582 && mes>=1 && mes<=12 ){
+
+        if(mes==2){
+            if(esBisiesto(agno)){
+                    return 29;
+            }
+            else{
+                return 28;
+            }
+
+
+            }
+
+        else if (mes==1 || mes==3 || mes==5 || mes==7 || mes==8 || mes==10|| mes==12){
+            return 31;
+        }
+        else{
+            return 30;
+        }
+    }     
+
+    
+}
 
 /*
  * Pre:  agno > 1582.
@@ -84,8 +116,14 @@ unsigned diasDelMes(unsigned mes, unsigned agno) {
  *       Por ejemplo: diasDelAgno(2018) devuelve 365 y
  *                    diasDelAgno(2020) devuelve 366.
  */
-unsigned diasDelAgno(unsigned agno) {
-    // Completar
+unsigned diasDelAgno(unsigned agno){
+
+    if(esBisiesto(agno)){
+        return 366;
+    }
+    else{
+        return 365;
+    }
 }
 
 
@@ -100,8 +138,22 @@ unsigned diasDelAgno(unsigned agno) {
  *                    diaEnElAgno(31, 12, 2020) devuelve 366.
  */
 unsigned diaEnElAgno(unsigned dia, unsigned mes, unsigned agno) {
-    // Completar
+
+    
+if (agno>1582 && mes>=1 && mes<=12 && dia>=1 && dia<=31 ){
+
+    unsigned i=1; 
+    unsigned diasAgno=0;
+    while (i<mes){
+        diasAgno+=diasDelMes(i,agno);
+        i++;
+    }
+return diasAgno+dia;
+
+        }
 }
+    
+
 
 
 /*
@@ -121,7 +173,22 @@ unsigned diaEnElAgno(unsigned dia, unsigned mes, unsigned agno) {
  *       diaSiguiente(d, m, a) los valores serían d = 1, m = 1 y a = 2023.
  */
 void diaSiguiente(unsigned& dia, unsigned& mes, unsigned& agno) {
-    // Completar
+
+
+    if(agno>1582 && mes>=1 && mes<=12 && dia>=1 && dia<=31 ){
+
+        dia++;
+        if(diasDelMes(mes,agno)<dia){
+            mes++;
+            dia=1;
+            if(mes>12){
+                agno++;
+                mes=1;
+            }
+
+        }
+        
+    }
 }
 
 
@@ -135,5 +202,15 @@ void diaSiguiente(unsigned& dia, unsigned& mes, unsigned& agno) {
  *       codifica martes y así sucesivamente hasta el 6, que codifica el domingo.
  */
 unsigned diaDeLaSemana(unsigned dia, unsigned mes, unsigned agno) {
-    // Completar
+    unsigned diasagno=-1;
+    unsigned i=1900;
+    while (i<agno)
+    {
+        diasagno+=diasDelAgno(i);
+        i++;
+    }
+    diasagno+=diaEnElAgno(dia, mes,agno);
+
+       return (diasagno%7);
+    
 }

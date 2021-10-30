@@ -13,6 +13,7 @@
 \******************************************************************************/
 #include <iostream>
 #include <string>
+#include<iomanip>
 using namespace std;
 
 /*
@@ -31,8 +32,41 @@ void escribirNombreMes(unsigned mes) {
 
 
 /*
- * ¡ESCRIBE LA ESPECIFICACIÓN!
+ * Programa  que solicita al usuario el valor de un mes y un año.  Si estos valores no son validos solicita reiterademente  
+ * que el  usuario  introduzca de nuevo unos valores válidos.
+ * El programa muestra el calendario del mes correspondiente en el año solicitado por el usuario. 
  */
 int main() {
+
+    int mes;
+    
+    cout<<"Introduzca el mes [1-12]: ";
+    cin>>mes;
+    while(mes< 1 || mes> 12)
+    {
+        cout<<"El mes debe estar comprendido entre 1 y 12: ";
+        cin>>mes;
+    }
+    
+    int agno;
+
+    cout<<"Introduzca un año igual o posterior a 1900: ";
+    cin>>agno;
+    while(agno<1900)
+    {
+        cout<<"El año debe ser igual o posterior a 1900: ";
+        cin>>agno;
+    } 
+    cout<<setw(19);
+    escribirNombreMes(mes);
+    cout<<" "<<agno<<endl;
+    cout<<setw(24)<<" L  M  X  J  V  S  D"<<endl;
+    cout<<" - - - - - - - - - - - -"<<endl;
+     
+     
+     
+     
+     
+     
     return 0;
 }
