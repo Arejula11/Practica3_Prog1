@@ -35,7 +35,7 @@ void presentarMenu() {
     cout << "5 - Comprobar si un entero es primo" << endl;
     cout << "6 - Calcular el factorial de un número" << endl;
     cout << "7 - Calcular el máximo común divisor de dos numeros" << endl;
-    cout << "8 - Calcular el mínimo común divisor de dos numeros" << endl;
+    cout << "8 - Calcular el mínimo común múltiplo de dos numeros" << endl;
     cout << "9 - Comprobar si un entero es capicua" << endl;
     cout << endl;
 }
