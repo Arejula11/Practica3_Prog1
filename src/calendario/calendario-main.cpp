@@ -46,6 +46,7 @@ void escribirCabecera(int& mes, int& agno){
 /*
  * Pre:  1 ≤ mes ≤ 12
  * Post: Solicita al usuario que introduzca el valor del mes
+ * Nota: Solicita hasta que el valor del año es valido
  */
 void pedirMes(int& mes){
     cout<<"Introduzca el mes [1-12]: ";
@@ -60,13 +61,14 @@ void pedirMes(int& mes){
 
 /*
  * Pre:  agno ≥ 1900
- * Post: Solicita al usuario que introduzca el valor del año
+ * Post: Solicita al usuario introduzca el valor del año
+ * Nota: Solicita hasta que el valor del año es valido
  */
 void pedirAgno(int& agno){
 
     cout<<"Introduzca un año igual o posterior a 1900: ";
     cin>>agno;
-    while(agno<1900)
+    while(agno<1900)        
     {
         cout<<"El año debe ser igual o posterior a 1900: ";
         cin>>agno;
@@ -99,7 +101,7 @@ void escribirDias(unsigned dia, unsigned mes, unsigned agno){
             dia++;
             if (diaDeLaSemana(dia,mes,agno)==0)
             {   
-                if(dia>=10){
+                if(dia>=10){        //Determina la cantidad de espacios en función de las cifras del número
                     cout<<endl;
                 cout<<dia<<"  ";
                 }
