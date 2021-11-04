@@ -120,12 +120,24 @@ void ejecutarEsPrimo(int numero) {
     cout << " es primo." << endl;
 }
 
+
+/*
+ * Pre:  ---
+ * Post: Ha ejecutado la 6ª orden, informando sobre si «numero» es un número primo
+ *       o no lo es.
+ */
 void ejecutarFactorial(int numero) {
     cout<< "El factorial de "<< numero<< " es "<<factorial(numero)<< "."<<endl;
  
 
 }
 
+
+/*
+ * Pre:  ---
+ * Post: Ha ejecutado la 7ª orden, informando sobre si «numero» es un número primo
+ *       o no lo es.
+ */
 void ejecutarMcd(int numero, int numero2){
     if (numero==numero2)
     {
@@ -137,6 +149,12 @@ void ejecutarMcd(int numero, int numero2){
     
 }
 
+
+/*
+ * Pre:  ---
+ * Post: Ha ejecutado la 8ª orden, informando sobre si «numero» es un número primo
+ *       o no lo es.
+ */
 void ejecutarMcm(int numero, int numero2){
     if (numero==numero2)
     {
@@ -147,6 +165,13 @@ void ejecutarMcm(int numero, int numero2){
     }
 
 }
+
+
+/*
+ * Pre:  ---
+ * Post: Ha ejecutado la 9ª orden, informando sobre si «numero» es un número primo
+ *       o no lo es.
+ */
 void ejecutarEsCapicua(int numero){
 
    cout << "El número " << numero;
@@ -157,9 +182,6 @@ void ejecutarEsCapicua(int numero){
 }
 
     
-        
-    
-
 
 
 /*
