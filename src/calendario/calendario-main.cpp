@@ -75,35 +75,10 @@ void pedirAgno(int& agno){
 
 /*
  * Pre:  ---
- * Post: Ha escrito en la pantalla  la cabecera del calendario
+ * Post: Determina y escribe en pantalla la posición del primer mes del día
  * 
  */
-void escribirPrimerDia(){
-
-
-}
-
-
-
-/*
- * Programa  que solicita al usuario el valor de un mes y un año.  Si estos valores no son validos solicita reiterademente  
- * que el  usuario  introduzca de nuevo unos valores válidos.
- * El programa muestra el calendario del mes correspondiente en el año solicitado por el usuario. 
- */
-int main() {
-
-    int mes;
-    pedirMes(mes);
-    
-    int agno;
-    pedirAgno(agno);
-    
-    escribirCabecera(mes,agno);
-
-    unsigned dia=1;
-    unsigned a=0;
-    unsigned separacion=2;
-
+void escribirPrimerDia(unsigned dia, unsigned mes, unsigned agno, unsigned separacion, unsigned a){
     while(a<diaDeLaSemana(dia,mes,agno)){
         separacion+=4;
         a++;
@@ -111,8 +86,14 @@ int main() {
 
     cout<<setw(separacion)<<dia<<"  ";
 
+}
 
-
+/*
+ * Pre:  ---
+ * Post: Escribe en pantalla el resto de números del mes correspondiente
+ * 
+ */
+void escribirDias(unsigned dia, unsigned mes, unsigned agno){
     while(dia<diasDelMes(mes,agno)){
 
             dia++;
@@ -136,12 +117,36 @@ int main() {
                 cout<<" "<<dia<<"  ";
                 }
             }  
-            
-        
-        
     }
-     
-     
-     
+
+
+}
+
+
+
+
+/*
+ * Programa  que solicita al usuario el valor de un mes y un año.  Si estos valores no son validos solicita reiterademente  
+ * que el  usuario  introduzca de nuevo unos valores válidos.
+ * El programa muestra el calendario del mes correspondiente en el año solicitado por el usuario. 
+ */
+int main() {
+
+    int mes;
+    pedirMes(mes);
+    
+    int agno;
+    pedirAgno(agno);
+    
+    escribirCabecera(mes,agno);
+
+    unsigned dia=1;
+    unsigned a=0;
+    unsigned separacion=2;
+
+    escribirPrimerDia(dia,mes,agno,separacion,a);
+    escribirDias(dia,mes,agno);
+
+
     return 0;
 }
