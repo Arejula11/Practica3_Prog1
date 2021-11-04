@@ -31,6 +31,59 @@ void escribirNombreMes(unsigned mes) {
     cout << NOMBRES_MES[mes - 1];
 }
 
+/*
+ * Pre:  ---
+ * Post: Ha escrito en la pantalla  la cabecera del calendario
+ * 
+ */
+void escribirCabecera(int& mes, int& agno){
+    cout<<setw(21);
+    escribirNombreMes(mes);
+    cout<<" "<<agno<<endl;
+    cout<<" L   M   X   J   V   S   D"<<endl;
+    cout<<" - - - - - - - - - - - - -"<<endl;
+}
+/*
+ * Pre:  1 ≤ mes ≤ 12
+ * Post: Solicita al usuario que introduzca el valor del mes
+ */
+void pedirMes(int& mes){
+    cout<<"Introduzca el mes [1-12]: ";
+    cin>>mes;
+    while(mes< 1 || mes> 12)
+    {
+        cout<<"El mes debe estar comprendido entre 1 y 12: ";
+        cin>>mes;
+    }
+
+}
+
+/*
+ * Pre:  agno ≥ 1900
+ * Post: Solicita al usuario que introduzca el valor del año
+ */
+void pedirAgno(int& agno){
+
+    cout<<"Introduzca un año igual o posterior a 1900: ";
+    cin>>agno;
+    while(agno<1900)
+    {
+        cout<<"El año debe ser igual o posterior a 1900: ";
+        cin>>agno;
+    }  
+}
+
+/*
+ * Pre:  ---
+ * Post: Ha escrito en la pantalla  la cabecera del calendario
+ * 
+ */
+void escribirPrimerDia(){
+
+
+}
+
+
 
 /*
  * Programa  que solicita al usuario el valor de un mes y un año.  Si estos valores no son validos solicita reiterademente  
@@ -40,60 +93,26 @@ void escribirNombreMes(unsigned mes) {
 int main() {
 
     int mes;
-    
-    cout<<"Introduzca el mes [1-12]: ";
-    cin>>mes;
-    while(mes< 1 || mes> 12)
-    {
-        cout<<"El mes debe estar comprendido entre 1 y 12: ";
-        cin>>mes;
-    }
+    pedirMes(mes);
     
     int agno;
+    pedirAgno(agno);
+    
+    escribirCabecera(mes,agno);
 
-    cout<<"Introduzca un año igual o posterior a 1900: ";
-    cin>>agno;
-    while(agno<1900)
-    {
-        cout<<"El año debe ser igual o posterior a 1900: ";
-        cin>>agno;
-    } 
-    cout<<setw(21);
-    escribirNombreMes(mes);
-    cout<<" "<<agno<<endl;
-    cout<<" L   M   X   J   V   S   D"<<endl;
-    cout<<" - - - - - - - - - - - - -"<<endl;
-     
     unsigned dia=1;
+    unsigned a=0;
+    unsigned separacion=2;
 
-    if (diaDeLaSemana(1,mes,agno)==1)
-    {
-        cout<<"     "<<dia<<"  ";
+    while(a<diaDeLaSemana(dia,mes,agno)){
+        separacion+=4;
+        a++;
     }
-    else if (diaDeLaSemana(1,mes,agno)==2)
-    {
-        cout<<"         "<<dia<<"  ";
-    }
-    else if (diaDeLaSemana(1,mes,agno)==3)
-    {
-        cout<<"             "<<dia<<"  ";
-    }
-    else if (diaDeLaSemana(1,mes,agno)==4)
-    {
-        cout<<"                 "<<dia<<"  ";
-    }
-    else if (diaDeLaSemana(1,mes,agno)==5)
-    {
-        cout<<"                     "<<dia<<"  ";
-    }
-    else if (diaDeLaSemana(1,mes,agno)==6)
-    {
-        cout<<"                         "<<dia<<"  ";
-    }
-    else
-    {
-        cout<<" "<<dia<<"  ";
-    }
+
+    cout<<setw(separacion)<<dia<<"  ";
+
+
+
     while(dia<diasDelMes(mes,agno)){
 
             dia++;
